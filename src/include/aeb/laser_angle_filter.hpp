@@ -21,8 +21,6 @@ public:
 
     LaserAngleFilter();
 
-private:
-
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr subscription_;
     rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr publisher_;
     
@@ -31,6 +29,10 @@ private:
     double current_angle;
 
     void filter_angle(const sensor_msgs::msg::LaserScan::SharedPtr msg);
+
+private:
+
+    
 
 
 };

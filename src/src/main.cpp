@@ -6,12 +6,13 @@
 
 int main(int argc, char **argv) {
 
-    auto aeb_node = std::make_shared<rom_dynamics::vechicle::AEB>();
+    // auto aeb_node = std::make_shared<rom_dynamics::vechicle::AEB>();
 
     //auto laser_filter_node = std::make_shared<LaserAngleFilter>();
-
-    rclcpp::init(0, nullptr);   //ရှာဖတ်ရန်
-    rclcpp::spin(aeb_node);
+    // rclcpp::init(0, nullptr);   //ရှာဖတ်ရန်
+    
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<rom_dynamics::vechicle::AEB>());
     rclcpp::shutdown();
     return 0;
 }

@@ -1,0 +1,50 @@
+[1.925s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'list', '-p', '--base-paths', '/home/zyme/ros_ws/aeb_lib']
+[1.925s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='list', build_base='build', ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['/home/zyme/ros_ws/aeb_lib'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], topological_order=False, names_only=False, paths_only=True, topological_graph=False, topological_graph_dot=False, topological_graph_density=False, topological_graph_legend=False, topological_graph_dot_cluster=False, topological_graph_dot_include_skipped=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x71e98ed70640>, verb_extension=<colcon_package_information.verb.list.ListVerb object at 0x71e98ed73490>, main=<bound method ListVerb.main of <colcon_package_information.verb.list.ListVerb object at 0x71e98ed73490>>, mixin_verb=('list',))
+[1.991s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.991s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.991s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.991s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.991s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.991s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/zyme/ros_ws/aeb_lib'
+[1.992s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extensions ['ignore', 'ignore_ament_install']
+[1.992s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extension 'ignore'
+[1.992s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extension 'ignore_ament_install'
+[1.992s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extensions ['colcon_pkg']
+[1.992s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extension 'colcon_pkg'
+[1.992s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extensions ['colcon_meta']
+[1.992s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extension 'colcon_meta'
+[1.992s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extensions ['ros']
+[1.992s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extension 'ros'
+[2.010s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extensions ['cmake', 'python']
+[2.010s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extension 'cmake'
+[2.010s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extension 'python'
+[2.010s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extensions ['python_setup_py']
+[2.010s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib) by extension 'python_setup_py'
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/log) by extensions ['ignore', 'ignore_ament_install']
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/log) by extension 'ignore'
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/log) ignored
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extensions ['ignore', 'ignore_ament_install']
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extension 'ignore'
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extension 'ignore_ament_install'
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extensions ['colcon_pkg']
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extension 'colcon_pkg'
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extensions ['colcon_meta']
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extension 'colcon_meta'
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extensions ['ros']
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extension 'ros'
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extensions ['cmake', 'python']
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extension 'cmake'
+[2.011s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extension 'python'
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extensions ['python_setup_py']
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/soft_copy) by extension 'python_setup_py'
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/src) by extensions ['ignore', 'ignore_ament_install']
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/src) by extension 'ignore'
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/src) by extension 'ignore_ament_install'
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/src) by extensions ['colcon_pkg']
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/src) by extension 'colcon_pkg'
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/src) by extensions ['colcon_meta']
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/src) by extension 'colcon_meta'
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/src) by extensions ['ros']
+[2.012s] Level 1:colcon.colcon_core.package_identification:_identify(/home/zyme/ros_ws/aeb_lib/src) by extension 'ros'
+[2.014s] DEBUG:colcon.colcon_core.package_identification:Package '/home/zyme/ros_ws/aeb_lib/src' with type 'ros.ament_cmake' and name 'aeb'
+[2.014s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults

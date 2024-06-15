@@ -30,13 +30,19 @@ add_executable(aeb  src/rom_aeb.cpp src/main.cpp)
 ament_target_dependencies(aeb rclcpp std_msgs sensor_msgs nav_msgs geometry_msgs)
 
 
+add_executable(aeb_lib src/aeb_lib.cpp)
+ament_target_dependencies(aeb_lib rclcpp std_msgs sensor_msgs nav_msgs geometry_msgs)
+
 # add_executable(laser  src/laser_angle_filter.cpp src/main.cpp)
 # ament_target_dependencies(laser rclcpp std_msgs sensor_msgs nav_msgs )
 
 install(TARGETS
   aeb
+  aeb_lib
   #laser
   DESTINATION lib/${PROJECT_NAME})
+
+
 
 
 ament_package()

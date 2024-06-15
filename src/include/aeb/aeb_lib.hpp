@@ -1,5 +1,6 @@
-#ifndef ROM_DYNAMICS_AEB
-#define ROM_DYNAMICS_AEB
+#ifndef AEB_LIB
+#define AEB_LIB
+#pragma once
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/bool.hpp"
@@ -30,25 +31,23 @@ public:
     
 
 private:
-    geometry_msgs::msg::Twist brake_msg_;
+
     bool should_brake_ = false;
     double TTC_final_threshold;
-    double odom_velocity_x_ = 0.0;
-    double odom_velocity_y_ = 0.0;
+
 
     nav_msgs::msg::Odometry::ConstSharedPtr odom_msg_;
     sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg_;
 
-    rclcpp::TimerBase::SharedPtr timer_; 
+    // rclcpp::TimerBase::SharedPtr timer_; 
     
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_pub_;     //publishers
-    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr brake_pub_;
-    rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr laser_filtered_pub_;
+    // rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_pub_;     //publishers
+    // rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr brake_pub_;
+    // rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr laser_filtered_pub_;
 
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr laser_sub_;   // subscribers
     rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
 
-    void timer_callback();
     void scan_callback(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg);
     void odom_callback(const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg);
    

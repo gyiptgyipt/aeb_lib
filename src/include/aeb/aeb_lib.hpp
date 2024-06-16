@@ -27,7 +27,7 @@ class AEB : public rclcpp::Node {
 public:
     AEB();
     
-    bool rom_aeb(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg, const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg);
+    bool rom_aeb(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg);
     
 
 private:

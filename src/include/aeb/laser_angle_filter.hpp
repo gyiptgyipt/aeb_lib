@@ -1,5 +1,6 @@
 #ifndef LASER_ANGLE_FILTER
 #define LASER_ANGLE_FILTER
+#pragma once
 
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"

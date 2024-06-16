@@ -30,7 +30,7 @@ add_executable(aeb  src/rom_aeb.cpp src/main.cpp)
 ament_target_dependencies(aeb rclcpp std_msgs sensor_msgs nav_msgs geometry_msgs)
 
 
-add_executable(aeb_lib src/aeb_lib.cpp)
+add_executable(aeb_lib src/aeb_lib.cpp src/laser_angle_filter src/linear.cpp)
 ament_target_dependencies(aeb_lib rclcpp std_msgs sensor_msgs nav_msgs geometry_msgs)
 
 # add_executable(laser  src/laser_angle_filter.cpp src/main.cpp)

@@ -1,4 +1,4 @@
-#include "aeb/rom_aeb.hpp"
+#include "aeb/aeb_lib.hpp"
 #include "aeb/laser_angle_filter.hpp"
 
 
@@ -50,7 +50,7 @@ rom_dynamics::vechicle::AEB::AEB() : Node("Rom_AEB_Node") {
 
 }
 
-bool rom_dynamics::vechicle::AEB::rom_aeb(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg, const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg){
+bool rom_dynamics::vechicle::AEB::rom_aeb(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg){
                                   
     auto filtered_scan = std::make_shared<sensor_msgs::msg::LaserScan>(*scan_msg);
 
@@ -65,7 +65,7 @@ bool rom_dynamics::vechicle::AEB::rom_aeb(const sensor_msgs::msg::LaserScan::Con
         }
         
         double angle = scan_msg->angle_min + scan_msg->angle_increment * i; //get the all ray of lidar
-        double distance_derivative = cos(angle) * odom_msg->twist.twist.linear.x;    // make scan_data to parallel with base velocity_x
+        double distance_derivative = cos(angle) * this->odom_msg_->twist.twist.linear.x;    // make scan_data to parallel with base velocity_x
         
         if (distance_derivative > 0 && (distance/distance_derivative) < min_TTC) {
             min_TTC = distance / std::max(distance_derivative, 0.001);

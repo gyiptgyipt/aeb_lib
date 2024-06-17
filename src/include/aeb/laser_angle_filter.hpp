@@ -22,14 +22,14 @@ public:
 
     LaserAngleFilter();
 
-    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr subscription_;
+    // rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr subscription_;
     rclcpp::Publisher<sensor_msgs::msg::LaserScan>::SharedPtr publisher_;
     
     double min_angle;
     double max_angle;
     double current_angle;
 
-    void filter_angle(const sensor_msgs::msg::LaserScan::SharedPtr msg);
+    sensor_msgs::msg::LaserScan::SharedPtr filter_angle(const sensor_msgs::msg::LaserScan::SharedPtr msg ,double min_angle,double max_angle);
 
 private:
 

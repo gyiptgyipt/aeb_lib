@@ -1,4 +1,4 @@
-#include "aeb/rom_aeb.hpp"
+#include "aeb/rom_aeb_lib.hpp"
 #include "aeb/laser_angle_filter.hpp"
 
 using namespace std::chrono_literals;
@@ -12,7 +12,10 @@ std::string input_velocity_topic = "/aeb/input_vel";
 
 
 
-rom_dynamics::vechicle::AEB::AEB() : Node("Rom_AEB_Node") {
+
+
+rom_dynamics::vechicle::AEB_LIB::AEB_LIB() : Node("Rom_AEB_Lib") {
+
     if (!this->has_parameter("ttc_final")) {
         this->declare_parameter("ttc_final", 1.0);
     }
@@ -23,51 +26,12 @@ rom_dynamics::vechicle::AEB::AEB() : Node("Rom_AEB_Node") {
             this->declare_parameter("max_angle", 30.0);
         }
 
-    bool should_brake_ = false;
 
-    // double min_angle = this->get_parameter("min_angle").as_double();   //laser rays ရဲ့ angle ကို dynamically ချိန်ညှိနိုင်ရန် နှင့် parameter သတ်မှတ်ရလွယ်ကူစေရန်
-    // double max_angle = this->get_parameter("max_angle").as_double();
-
-    // TTC_final_threshold = this->get_parameter("ttc_final").as_double(); // second
-
-    laser_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(scan_topic, 10, std::bind(&rom_dynamics::vechicle::AEB::scan_callback, this, std::placeholders::_1));
-    odom_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(odom_topic, 10, std::bind(&rom_dynamics::vechicle::AEB::odom_callback, this, std::placeholders::_1));
-
-    twist_pub_ = this->create_publisher<geometry_msgs::msg::Twist>(publish_topic, 10);
-    vel_subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(
-            input_velocity_topic, 10, std::bind(&rom_dynamics::vechicle::AEB::velocity_subscription, this, std::placeholders::_1));
-
-
-    brake_pub_ = this->create_publisher<std_msgs::msg::Bool>(aeb_topic, 10); //brake topic 
-    laser_filtered_pub_ = this->create_publisher<sensor_msgs::msg::LaserScan>(laser_filtered_topic, 10);     // laser_angle_filter အတွက် publisher 
-
-    timer_ = this->create_wall_timer(100ms, std::bind(&AEB::timer_callback, this));
-
-    brake_msg_.linear.x = 0.0000;
-    brake_msg_.angular.z = 0.0000;
-
-    RCLCPP_INFO(rclcpp::get_logger("\033[1;33mAES\033[1;0m"), ": \033[1;33mTTC_Final : %.4f\033[1;0m", TTC_final_threshold);
 }
 
-void rom_dynamics::vechicle::AEB::timer_callback() {
-    if (should_brake_ == true) { 
-       
-        brake_status_.data = should_brake_;
-        brake_pub_->publish(brake_status_);
-        twist_pub_->publish(brake_msg_);
-        RCLCPP_INFO(rclcpp::get_logger("\033[1;33mAES\033[1;0m"), ": \033[1;31mBreaking\033[1;0m");
-    }
-    else { 
-        RCLCPP_INFO(rclcpp::get_logger("\033[1;33mAES\033[1;0m"), ": \033[1;32mReleased\033[1;0m"); 
-        RCLCPP_INFO(rclcpp::get_logger("\033[1;33mAES\033[1;0m"), ": \033[1;33mTTC_Final : %.4f\033[1;0m", TTC_final_threshold);
-        brake_status_.data = should_brake_;
-        brake_pub_->publish(brake_status_);
-        twist_pub_->publish(input_vel_);
-    }
-}
 
-void rom_dynamics::vechicle::AEB::scan_callback(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg) {
-    // Actual implementation here
+bool rom_dynamics::vechicle::AEB_LIB::calculate_aeb(const sensor_msgs::msg::LaserScan::ConstSharedPtr scan_msg, const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg , double min_angle , double max_angle , double TTC_final_threshold){
+
     TTC_final_threshold = this->get_parameter("ttc_final").as_double(); // seconds
 
     double min_angle = this->get_parameter("min_angle").as_double();   //laser rays ရဲ့ angle ကို dynamically ချိန်ညှိနိုင်ရန် နှင့် parameter သတ်မှတ်ရလွယ်ကူစေရန်
@@ -144,16 +108,15 @@ void rom_dynamics::vechicle::AEB::scan_callback(const sensor_msgs::msg::LaserSca
     if (min_TTC <= TTC_final_threshold){
         should_brake_ = true;
     }
-}
 
-void rom_dynamics::vechicle::AEB::odom_callback(const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg) {
-    this->odom_velocity_x_ = odom_msg->twist.twist.linear.x;
-    this->odom_velocity_y_ = odom_msg->twist.twist.linear.y;
-}
-
-void rom_dynamics::vechicle::AEB::velocity_subscription(const geometry_msgs::msg::Twist::ConstSharedPtr vel_msg){
-
-    this->input_vel_.linear = vel_msg->linear;
-    this->input_vel_.angular = vel_msg->angular;
+    return should_brake_;
 
 }
+
+// void rom_dynamics::vechicle::AEB_LIB::odom_callback(const nav_msgs::msg::Odometry::ConstSharedPtr odom_msg) {
+//     odom_velocity_x_ = odom_msg->twist.twist.linear.x;
+//     odom_velocity_y_ = odom_msg->twist.twist.linear.y;
+// }
+
+
+
